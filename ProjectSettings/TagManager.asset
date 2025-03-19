@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Squid
+  - Fish
+  - Shark
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1003825723
+    locked: 0
+  - name: Midground
+    uniqueID: 1062125303
+    locked: 0
+  - name: Foreground
+    uniqueID: 697779387
+    locked: 0
+  - name: Fish
+    uniqueID: 4078149991
+    locked: 0
+  - name: Player
+    uniqueID: 856195077
+    locked: 0
