@@ -42,7 +42,7 @@ public class squidScript : MonoBehaviour
 
         // if the animal is a shark, the squid is eaten
         if(animal.tag == "Shark"){
-            gameManager.GameOver();
+            gameManager.gameOver();
             isAlive = false; // squid is not alive
         }
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class gameManager : MonoBehaviour
@@ -27,7 +28,12 @@ public class gameManager : MonoBehaviour
         scoreLabel.text = "Score: " + squid.score.ToString();
     }
 
-    public void GameOver(){
+    public void gameOver(){
         gameOverScreen.gameObject.SetActive(true);
+    }
+
+    public void restartGame(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        squid.isAlive = true; // sets that the squid is alive
     }
 }
