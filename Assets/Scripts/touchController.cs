@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
@@ -27,7 +28,7 @@ public class touchController : MonoBehaviour
 
                 if(touch.phase == TouchPhase.Moved){
                     // detects the direction of the player's finger
-                    Vector2 dragDirection = (touch.screenPosition - touch.startScreenPosition) /Screen.dpi;
+                    UnityEngine.Vector2 dragDirection = (touch.screenPosition - touch.startScreenPosition) /Screen.dpi;
 
                     // moves the squid in the drag direction
                     if(squid != null){
@@ -38,10 +39,14 @@ public class touchController : MonoBehaviour
 
                 if(touch.phase == TouchPhase.Ended){
                     if(squid != null){
-                        squid.moveWithVector(Vector3.zero);
+                        squid.moveWithVector(UnityEngine.Vector2.zero);
                     }
                 }
             }
+        }
+        else{
+            // if the squid is dead, its movement is stopped
+            squid.moveWithVector(UnityEngine.Vector2.zero);
         }
     }
 }
