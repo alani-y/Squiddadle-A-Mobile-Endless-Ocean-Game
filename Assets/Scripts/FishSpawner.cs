@@ -41,7 +41,7 @@ public class FishSpawner : MonoBehaviour
         }
         else{
             // creates a shark near the squid
-            displacement = new Vector3(squid.transform.position.x + Random.Range(-40, 40),
+            displacement = new Vector3(squid.transform.position.x + Random.Range(-100, 100),
             squid.transform.position.y + Random.Range(-40, 40));
             Instantiate(shark, displacement, transform.rotation);
             // resets the fishTimer when a new fish is created

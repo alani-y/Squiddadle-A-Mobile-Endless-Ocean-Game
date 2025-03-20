@@ -6,27 +6,37 @@ using UnityEngine;
 public class sharkScript : MonoBehaviour
 {
     private new Rigidbody2D rigidbody2D;
-    public float sharkSpeed = 5;
-    public float xDirection;
-    public float yDirection;
-    public float timer;
-    public float directionInterval = 5;
-    // Start is called before the first frame update
+    public float sharkSpeed = 1f;
+    public float directionInterval = 0.5f;
+    public Vector2 movementBounds = new Vector2(-100f, 100f); // keeps the shark to a limited area
+
+    private Vector2 targetPosition;
+    private float timer;
+
     void Start()
     {
-        Vector2 newPosition = new Vector3(UnityEngine.Random.Range(-1, 1) * sharkSpeed, UnityEngine.Random.Range(-1, 1)*sharkSpeed);
-        transform.position = newPosition;
+        targetPosition = GetRandomPosition();
+        transform.position = targetPosition;
     }
 
-    // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
-        if(timer >= directionInterval){
-            //Vector2 newPosition = transform.position;
-            Vector2 newPosition = new Vector3(UnityEngine.Random.Range(-1f, 1f) * sharkSpeed, UnityEngine.Random.Range(-1f, 1f)*sharkSpeed);
-            transform.position = newPosition;
-            timer = 0;
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, Time.deltaTime * sharkSpeed);
+
+        // checks if the shark arrives at its destination
+         if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
+        {
+            targetPosition = GetRandomPosition();
         }
+    }
+
+    Vector2 GetRandomPosition()
+    {
+        // gets a random vector within the bounds defined in movementBounds
+        return new Vector2(
+            UnityEngine.Random.Range(-movementBounds.x, movementBounds.x),
+            UnityEngine.Random.Range(-movementBounds.y, movementBounds.y)
+        );
     }
 }
