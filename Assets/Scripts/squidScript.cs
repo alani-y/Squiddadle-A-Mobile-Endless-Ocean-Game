@@ -20,6 +20,18 @@ public class squidScript : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
+    void Update()
+    {
+        Vector2 pos = transform.position;
+
+        SpriteRenderer background = GameObject.Find("Ocean").GetComponent<SpriteRenderer>();
+
+        float bgTop = background.bounds.max.y;
+        float bgBottom = background.bounds.min.y;
+
+        pos.y = Mathf.Clamp(pos.y, bgBottom, bgTop);
+        transform.position = pos;
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
