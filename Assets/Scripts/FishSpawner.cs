@@ -53,7 +53,7 @@ public class FishSpawner : MonoBehaviour
         else{
             // creates a shark near the squid
             xMaxBounds = 100f;
-            yMaxBounds = 10f;
+            yMaxBounds = 50f;
             buffer = 200f;
             displacement = GetInitialSpawn();
             Debug.Log(displacement);
@@ -77,24 +77,21 @@ public class FishSpawner : MonoBehaviour
 
         // calculates how close a fish can spawn to the player
         // a fish will always spawn outside of the player's camera view
-        float leftMinBounds = transform.position.x - camHalfWidth - buffer;
-        float rightMinBounds = transform.position.x + camHalfWidth + buffer;
-        float topMinBounds = transform.position.y - camHalfHeight - buffer;
-        float bottomMinBounds = transform.position.y + camHalfHeight + buffer;
+        // Player position
+    Vector2 playerPos = transform.position;
 
-        // randomly selects if the fish will spawn northwest or southeast of the player
-        if (rangeSection < 0.5){
-            // spawn offscreen to the northwest
-            xSpawnVector = Random.Range(leftMinBounds - xMaxBounds, leftMinBounds);
-            ySpawnVector = Random.Range(topMinBounds - yMaxBounds, yMaxBounds);
+    float xOffset = camHalfWidth + buffer;
+    float yOffset = camHalfHeight + buffer;
 
-        }
-        else{
-            // spawn offscreen to the southeast
-            xSpawnVector = Random.Range(rightMinBounds, rightMinBounds + xMaxBounds);
-            ySpawnVector = Random.Range(bottomMinBounds, bottomMinBounds+yMaxBounds);
-
-        }
+    if (rangeSection < 0.5f) {
+        // spawn to the top left
+        xSpawnVector = Random.Range(playerPos.x - xOffset - xMaxBounds, playerPos.x - xOffset);
+        ySpawnVector = Random.Range(playerPos.y + yOffset, playerPos.y + yOffset + yMaxBounds);
+    } else {
+        // spawn to the bottom right
+        xSpawnVector = Random.Range(playerPos.x + xOffset, playerPos.x + xOffset + xMaxBounds);
+        ySpawnVector = Random.Range(playerPos.y - yOffset - yMaxBounds, playerPos.y - yOffset);
+    }
         return new Vector2(xSpawnVector, ySpawnVector);
     }
 }

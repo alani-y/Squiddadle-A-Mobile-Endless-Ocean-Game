@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-//using UnityEditor.UI;
+using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,11 +13,17 @@ public class squidScript : MonoBehaviour
     public int swimSpeed = 10;
     public int score = 0;
     public gameManager gameManager;
+
+    private Animator anim;
     public bool isAlive = true;
+
+    private SpriteRenderer sp;
 
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        sp = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -36,6 +42,14 @@ public class squidScript : MonoBehaviour
     void FixedUpdate()
     {
         rigidbody2D.AddForce(moveVector*swimSpeed, ForceMode2D.Force);
+        anim.SetFloat("xSpeed", rigidbody2D.velocity.x);
+
+        if(rigidbody2D.velocity.x > 0){
+            sp.flipX = false;
+        }
+        else{
+            sp.flipX = true;
+        }
     }
 
     // moves the squid in the dragged direction
@@ -58,4 +72,5 @@ public class squidScript : MonoBehaviour
             isAlive = false; // squid is not alive
         }
     }
+
 }

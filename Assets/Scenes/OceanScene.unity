@@ -225,6 +225,14 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.703295
       objectReference: {fileID: 0}
+    - target: {fileID: 698824336260787489, guid: 0eea7e83562eed5488e5d53682764037, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 10.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 698824336260787489, guid: 0eea7e83562eed5488e5d53682764037, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 17.14
+      objectReference: {fileID: 0}
     - target: {fileID: 1428562974073775325, guid: 0eea7e83562eed5488e5d53682764037, type: 3}
       propertyPath: m_Name
       value: shark
@@ -269,10 +277,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5748403152892295050, guid: 0eea7e83562eed5488e5d53682764037, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1962830060, guid: 327347b499beb494fb9b2f56cd0f7961, type: 3}
+    - target: {fileID: 5748403152892295050, guid: 0eea7e83562eed5488e5d53682764037, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7785519191322237931, guid: 0eea7e83562eed5488e5d53682764037, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 992359550}
   m_SourcePrefab: {fileID: 100100000, guid: 0eea7e83562eed5488e5d53682764037, type: 3}
 --- !u!1 &293101821
 GameObject:
@@ -501,7 +520,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.482008
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -527,7 +546,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.2500029, y: 4.015046, z: -125}
-  m_LocalScale: {x: 12.5, y: 12.5, z: 12.5}
+  m_LocalScale: {x: 24.5565, y: 24.5565, z: 24.5565}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 981605755}
@@ -911,6 +930,7 @@ GameObject:
   - component: {fileID: 981605756}
   - component: {fileID: 981605757}
   - component: {fileID: 981605758}
+  - component: {fileID: 981605759}
   m_Layer: 0
   m_Name: Squid
   m_TagString: Squid
@@ -959,7 +979,7 @@ SpriteRenderer:
   m_SortingLayerID: 856195077
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 55c11083d4341974b955814c6545803d, type: 3}
+  m_Sprite: {fileID: 204402650, guid: c92044cf74f6d7d4d9d7fa281c201709, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -979,8 +999,8 @@ Transform:
   m_GameObject: {fileID: 981605753}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.86, y: 5.878796, z: 0}
-  m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
+  m_LocalPosition: {x: -31.6, y: 5.878796, z: 0}
+  m_LocalScale: {x: 0.16937599, y: 0.16937599, z: 0.16937599}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 519420032}
@@ -1065,7 +1085,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 20.48, y: 20.48}
+    oldSize: {x: 10.660001, y: 10}
     newSize: {x: 20.48, y: 20.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1074,6 +1094,53 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 12.156922, y: 14.497795}
   m_EdgeRadius: 0
+--- !u!95 &981605759
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981605753}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 09dbea918f28df848a1e2d00c389326c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &992359548 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7785519191322237931, guid: 0eea7e83562eed5488e5d53682764037, type: 3}
+  m_PrefabInstance: {fileID: 283983191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &992359550
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992359548}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 00b4b39de1a110a4ea05926cfcb44de2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1016816547
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,8 +2176,14 @@ MonoBehaviour:
   fish: {fileID: 1050619877590918672, guid: 0bc521bae4a9d0f4a80152d5535d3640, type: 3}
   squid: {fileID: 981605753}
   shark: {fileID: 1428562974073775325, guid: 0eea7e83562eed5488e5d53682764037, type: 3}
+  cam: {fileID: 0}
+  cameraHalfWidth: 0
+  cameraHalfHeight: 0
   fishSpawnRate: 3
   sharkSpawnRate: 10
+  xMaxBounds: 0
+  yMaxBounds: 0
+  buffer: 0
 --- !u!4 &1942569484
 Transform:
   m_ObjectHideFlags: 0

@@ -7,7 +7,8 @@ using UnityEngine;
 
 public class sharkScript : fishScript
 {
-    public override float fishSpeed => 4f;
+    public override float fishSpeed => 3f;
+    public override float maxSpeed => 8f;
 
     // keeps the shark's movements to a limited area
     public override Vector2 movementBounds => new Vector2(-800f, 800f);
@@ -20,5 +21,10 @@ public class sharkScript : fishScript
     public override void Update()
     {
         base.Update();
+    }
+
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
     }
 }
