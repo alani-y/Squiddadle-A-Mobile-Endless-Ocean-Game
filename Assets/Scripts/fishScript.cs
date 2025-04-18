@@ -11,8 +11,8 @@ public class fishScript : MonoBehaviour
     private SpriteRenderer sp;
     public virtual float maxSpeed => 4f;
     private Animator anim;
-    private Rigidbody2D rb;
-    public virtual Vector2 movementBounds => new Vector2(-800f, 800f); // keeps the fish's movements to a limited area
+    protected Rigidbody2D rb;
+    public virtual Vector2 movementBounds => new Vector2(-1000f, 1000f); // keeps the fish's movements to a limited area
 
     private Vector2 targetPosition;
     private float timer;
@@ -28,13 +28,6 @@ public class fishScript : MonoBehaviour
     public virtual void Update()
     {
         timer += Time.deltaTime;
-        //transform.position = Vector2.MoveTowards(transform.position, targetPosition, Time.deltaTime * fishSpeed);
-
-        // checks if the fish arrives at its destination
-        /*if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
-        {
-            targetPosition = GetRandomPosition();
-        }*/
     }
 
     public virtual Vector2 GetRandomPosition()

@@ -56,7 +56,7 @@ public class FishSpawner : MonoBehaviour
             yMaxBounds = 50f;
             buffer = 200f;
             displacement = GetInitialSpawn();
-            Debug.Log(displacement);
+            //Debug.Log(displacement);
             Instantiate(shark, displacement, transform.rotation);
             // resets the fishTimer when a new shark is created
             sharkTimer = 0;
@@ -64,34 +64,34 @@ public class FishSpawner : MonoBehaviour
     }
 
     public Vector2 GetInitialSpawn(){
-        // x and y components of the fish's final spawn vector
         float xSpawnVector;
         float ySpawnVector;
 
-        float rangeSection = Random.Range(0f, 1.0f);
+        //float rangeSection = Random.Range(0f, 1.0f);
 
-        // the size of half of the camera view
         float camHalfHeight = Camera.main.orthographicSize;
         float camHalfWidth = camHalfHeight * Camera.main.aspect;
-        //Debug.Log(camHalfHeight +", " + camHalfWidth);
 
-        // calculates how close a fish can spawn to the player
-        // a fish will always spawn outside of the player's camera view
-        // Player position
-    Vector2 playerPos = transform.position;
+        Vector2 playerPos = transform.position;
 
-    float xOffset = camHalfWidth + buffer;
-    float yOffset = camHalfHeight + buffer;
+        float xOffset = camHalfWidth + buffer;
+        float yOffset = camHalfHeight + buffer;
 
-    if (rangeSection < 0.5f) {
-        // spawn to the top left
-        xSpawnVector = Random.Range(playerPos.x - xOffset - xMaxBounds, playerPos.x - xOffset);
-        ySpawnVector = Random.Range(playerPos.y + yOffset, playerPos.y + yOffset + yMaxBounds);
-    } else {
-        // spawn to the bottom right
-        xSpawnVector = Random.Range(playerPos.x + xOffset, playerPos.x + xOffset + xMaxBounds);
-        ySpawnVector = Random.Range(playerPos.y - yOffset - yMaxBounds, playerPos.y - yOffset);
-    }
+        // decides a random side to spawn from, 0 = left, 1 = right
+        bool spawnLeft = Random.value < 0.5f;
+        bool spawnAbove = Random.value < 0.5f;
+
+        if (spawnLeft)
+            xSpawnVector = Random.Range(playerPos.x - xOffset - xMaxBounds, playerPos.x - xOffset);
+        else
+            xSpawnVector = Random.Range(playerPos.x + xOffset, playerPos.x + xOffset + xMaxBounds);
+
+        if (spawnAbove)
+            ySpawnVector = Random.Range(playerPos.y + yOffset, playerPos.y + yOffset + yMaxBounds);
+        else
+            ySpawnVector = Random.Range(playerPos.y - yOffset - yMaxBounds, playerPos.y - yOffset);
+
         return new Vector2(xSpawnVector, ySpawnVector);
     }
+
 }
