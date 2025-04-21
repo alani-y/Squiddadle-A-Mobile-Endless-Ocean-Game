@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.UI;
 using UnityEngine;
 
 public class sharkScript : fishScript
@@ -10,9 +11,8 @@ public class sharkScript : fishScript
     protected squidScript squidScript;
     public override float fishSpeed => 3f;
     public override float maxSpeed => 8f;
-
     private bool isChasing;
-    public float detectionRadius = 15f;
+    public float detectionRadius = 25f;
     private bool stunnedByInk = false;
     private float inkStunDuration = 3f;
 
@@ -21,20 +21,14 @@ public class sharkScript : fishScript
     public override void Start()
     {
         base.Start();
-        if (squid == null)
-        {
-            squid = GameObject.FindWithTag("Squid");
-            squidScript = squid.GetComponent<squidScript>();
-        }
-
-        // Subscribe to ink event
-        squidScript.OnSquidInked += HandleSquidInk;
+        squid = GameObject.FindWithTag("Squid");
+        squidScript = squid.GetComponent<squidScript>();
+        squidScript.RegisterShark(this);
     }
 
-    public void OnDestroy()
+    public void StunFromInk()
     {
-        // Clean up event subscription
-        squidScript.OnSquidInked -= HandleSquidInk;
+        StartCoroutine(StunCoroutine());
     }
 
     public override void Update()
@@ -44,6 +38,7 @@ public class sharkScript : fishScript
 
     public override void FixedUpdate()
     {
+        base.FixedUpdate();
         if (stunnedByInk || squid == null || !squidScript.isAlive)
             return;
 

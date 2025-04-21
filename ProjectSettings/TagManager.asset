@@ -56,6 +56,9 @@ TagManager:
   - name: Fish
     uniqueID: 4078149991
     locked: 0
+  - name: Ink
+    uniqueID: 1550084977
+    locked: 0
   - name: Player
     uniqueID: 856195077
     locked: 0

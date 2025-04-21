@@ -17,6 +17,8 @@ public class fishScript : MonoBehaviour
     private Vector2 targetPosition;
     private float timer;
 
+    private float spawnBuffer = 5;
+
     public virtual void Start()
     {
         transform.position = targetPosition;

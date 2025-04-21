@@ -27,7 +27,6 @@ public class FishSpawner : MonoBehaviour
     void Start()
     {
         Instantiate(fish, transform.position, transform.rotation);
-        //Instantiate(shark, new Vector2(transform.position.x + 20, transform.position.y + 20), transform.rotation);
     }
 
     // Update is called once per frame
@@ -42,7 +41,7 @@ public class FishSpawner : MonoBehaviour
             xMaxBounds = 4f;
             yMaxBounds = 2f;
             displacement = GetInitialSpawn();
-            Instantiate(fish, displacement, transform.rotation);
+            Instantiate(fish, displacement, cam.transform.rotation);
             // resets the fishTimer when a new fish is created
             fishTimer = 0;
         }
@@ -52,12 +51,12 @@ public class FishSpawner : MonoBehaviour
         }
         else{
             // creates a shark near the squid
-            xMaxBounds = 100f;
-            yMaxBounds = 50f;
-            buffer = 200f;
+            xMaxBounds = 20f;
+            yMaxBounds = 5f;
+            buffer = 4f;
             displacement = GetInitialSpawn();
             //Debug.Log(displacement);
-            Instantiate(shark, displacement, transform.rotation);
+            Instantiate(shark, displacement, cam.transform.rotation);
             // resets the fishTimer when a new shark is created
             sharkTimer = 0;
         }
@@ -72,7 +71,7 @@ public class FishSpawner : MonoBehaviour
         float camHalfHeight = Camera.main.orthographicSize;
         float camHalfWidth = camHalfHeight * Camera.main.aspect;
 
-        Vector2 playerPos = transform.position;
+        Vector2 playerPos = cam.transform.position;
 
         float xOffset = camHalfWidth + buffer;
         float yOffset = camHalfHeight + buffer;

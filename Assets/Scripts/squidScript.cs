@@ -1,9 +1,10 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using UnityEditor.UI;
+
 
 public class squidScript : MonoBehaviour
 {
@@ -12,15 +13,22 @@ public class squidScript : MonoBehaviour
     public int swimSpeed = 10;
     public int score = 0;
     public gameManager gameManager;
+
+    public sharkScript sharkScript;
+
     private Animator anim;
     public bool isAlive = true;
     private SpriteRenderer sp;
+    public ParticleSystem inkAbility;
 
-    public static event Action OnSquidInked; // Event to notify sharks
+    [Header("Ink Ability Settings")]
+    public float inkCooldown = 10f;
+    public float inkTimer = 0f;
 
-    private float inkCooldown = 10f; // cooldown for the inkblot ability
-    private float inkTimer = 0f; //
-    private bool canInk => inkTimer <= 0f; // stores if the ability can be used
+    [Header("Ink Event")]
+    public UnityEvent onInkUsed;
+
+    public List<sharkScript> sharkListeners = new List<sharkScript>();
 
     void Start()
     {
@@ -28,6 +36,11 @@ public class squidScript : MonoBehaviour
         anim = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
         inkTimer = 0f;
+    }
+
+    public void RegisterShark(sharkScript shark)
+    {
+        sharkListeners.Add(shark);
     }
 
     void Update()
@@ -41,22 +54,19 @@ public class squidScript : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, bgBottom, bgTop);
         transform.position = pos;
 
-        // ink ability cooldown timer
+        // hides the squid if its dead
+        if(!isAlive){
+            sp.enabled = false;
+        }
+
         if (inkTimer > 0f)
             inkTimer -= Time.deltaTime;
-
-
-        /*if (Input.GetKeyDown(KeyCode.Space) && canInk && isAlive)
-        {
-            UseInk();
-        }*/
     }
 
     void FixedUpdate()
     {
         rigidbody2D.AddForce(moveVector * swimSpeed, ForceMode2D.Force);
         anim.SetFloat("xSpeed", rigidbody2D.velocity.x);
-
         sp.flipX = rigidbody2D.velocity.x <= 0;
     }
 
@@ -65,24 +75,30 @@ public class squidScript : MonoBehaviour
         moveVector = squidMoveVector;
     }
 
-    // method for the squid ink ability
     public void UseInk()
     {
-        OnSquidInked?.Invoke();
-        inkTimer = inkCooldown;
-        Debug.Log("Squid ink used!");
+        if (inkTimer <= 0f && isAlive)
+        {
+            foreach (var shark in sharkListeners)
+            {
+                shark.StunFromInk();
+            }
+            inkAbility.Play();
+            Debug.Log("squid ink activated");
+            inkTimer = inkCooldown;
+        }
+
     }
 
-    //
     private void OnTriggerEnter2D(Collider2D animal)
     {
-        if (animal.tag == "Fish")
+        if (animal.CompareTag("Fish") && isAlive)
         {
             animal.gameObject.SetActive(false);
             score += 1;
         }
 
-        if (animal.tag == "Shark")
+        if (animal.CompareTag("Shark"))
         {
             gameManager.gameOver();
             isAlive = false;
