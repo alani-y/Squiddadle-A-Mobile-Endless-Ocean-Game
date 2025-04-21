@@ -21,10 +21,10 @@ public class fishScript : MonoBehaviour
 
     public virtual void Start()
     {
-        transform.position = targetPosition;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
+        //transform.position = targetPosition;
     }
 
     public virtual void Update()

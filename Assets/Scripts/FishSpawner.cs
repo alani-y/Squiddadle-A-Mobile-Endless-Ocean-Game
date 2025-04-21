@@ -27,6 +27,7 @@ public class FishSpawner : MonoBehaviour
     void Start()
     {
         Instantiate(fish, transform.position, transform.rotation);
+
     }
 
     // Update is called once per frame
@@ -38,9 +39,10 @@ public class FishSpawner : MonoBehaviour
         else{
             // creates a fish near the squid
             buffer = 0;
-            xMaxBounds = 4f;
-            yMaxBounds = 2f;
+            xMaxBounds = 0f;
+            yMaxBounds = 0f;
             displacement = GetInitialSpawn();
+            Debug.Log("fish displacement:" + displacement);
             Instantiate(fish, displacement, cam.transform.rotation);
             // resets the fishTimer when a new fish is created
             fishTimer = 0;
@@ -52,31 +54,30 @@ public class FishSpawner : MonoBehaviour
         else{
             // creates a shark near the squid
             xMaxBounds = 20f;
-            yMaxBounds = 5f;
+            yMaxBounds = 20f;
             buffer = 4f;
             displacement = GetInitialSpawn();
-            //Debug.Log(displacement);
+            Debug.Log(displacement);
             Instantiate(shark, displacement, cam.transform.rotation);
             // resets the fishTimer when a new shark is created
             sharkTimer = 0;
         }
     }
 
-    public Vector2 GetInitialSpawn(){
+    public Vector2 GetInitialSpawn()
+    {
         float xSpawnVector;
         float ySpawnVector;
 
-        //float rangeSection = Random.Range(0f, 1.0f);
+        float camHalfHeight = cam.orthographicSize;
+        float camHalfWidth = camHalfHeight * cam.aspect;
 
-        float camHalfHeight = Camera.main.orthographicSize;
-        float camHalfWidth = camHalfHeight * Camera.main.aspect;
-
+        // camera position is the base for the fish spawn range
         Vector2 playerPos = cam.transform.position;
 
         float xOffset = camHalfWidth + buffer;
         float yOffset = camHalfHeight + buffer;
 
-        // decides a random side to spawn from, 0 = left, 1 = right
         bool spawnLeft = Random.value < 0.5f;
         bool spawnAbove = Random.value < 0.5f;
 
