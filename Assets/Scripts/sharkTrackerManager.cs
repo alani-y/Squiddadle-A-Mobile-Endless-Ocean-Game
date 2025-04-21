@@ -4,15 +4,15 @@ using System.Collections.Generic;
 public class SharkTrackerUI : MonoBehaviour
 {
     public RectTransform canvasRect;           // Reference to Canvas RectTransform
-    public Camera mainCam;                     // Reference to main camera
-    public GameObject rayPrefab;               // Prefab for ray indicator (thin arrow image)
+    public Camera mainCam;
+    public GameObject rayPrefab;
     public Transform squid;                    // Reference to the squid/player
 
     private Dictionary<sharkScript, GameObject> rays = new();
 
     void Start()
     {
-        Instantiate(rayPrefab, canvasRect);
+        //Instantiate(rayPrefab, canvasRect);
     }
     void OnEnable()
     {
