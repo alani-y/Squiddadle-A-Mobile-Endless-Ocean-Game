@@ -13,12 +13,13 @@ public class squidScript : MonoBehaviour
     public gameManager gameManager;
     private saveManager saveManager;
     public sharkScript sharkScript;
-
+    public SFXPlayerScript sFXPlayerScript;
     private Animator anim;
     public RuntimeAnimatorController altSquidAnimator;
     public bool isAlive = true;
     private SpriteRenderer sp;
     public ParticleSystem inkAbility;
+    public AudioClip squidDeathSound;
 
     [Header("Ink Ability Settings")]
     public float inkCooldown = 10f;
@@ -108,6 +109,7 @@ public class squidScript : MonoBehaviour
         // the squid is dead if it hits a shark
         if (animal.CompareTag("Shark"))
         {
+            sFXPlayerScript.playSFX(squidDeathSound);
             gameManager.gameOver();
             isAlive = false;
         }

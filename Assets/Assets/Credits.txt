@@ -1,3 +1,9 @@
 Font:
 https://www.dafont.com/chewy-bubble.font
 
+Underwater soundtrack:
+underwater_ambience_lake_lbj_08232013_1.flac by wjoojoo -- https://freesound.org/s/197751/ -- License: Creative Commons 0
+
+Underwater Blub 03 by Department64 -- https://freesound.org/s/651744/ -- License: Attribution 4.0
+
+bite_2 by BBoz87 -- https://freesound.org/s/788241/ -- License: Attribution 4.0
