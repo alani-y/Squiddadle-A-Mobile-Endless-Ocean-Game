@@ -81,6 +81,10 @@ public class saveManager : MonoBehaviour
             Debug.Log("file reading or writing error: " + e.Message);
         }
     }
+
+    public bool hasAlternateSquid(){
+        return currentData.hasAlternateSquid;
+    }
 }
 
 // the save data for the game

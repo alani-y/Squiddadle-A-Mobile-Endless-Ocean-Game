@@ -11,10 +11,11 @@ public class squidScript : MonoBehaviour
     public int swimSpeed = 10;
     public int score = 0;
     public gameManager gameManager;
-
+    private saveManager saveManager;
     public sharkScript sharkScript;
 
     private Animator anim;
+    public RuntimeAnimatorController altSquidAnimator;
     public bool isAlive = true;
     private SpriteRenderer sp;
     public ParticleSystem inkAbility;
@@ -33,6 +34,7 @@ public class squidScript : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
+        saveManager = gameManager.GetComponent<saveManager>();
         inkTimer = 0f;
     }
 
@@ -57,8 +59,14 @@ public class squidScript : MonoBehaviour
             sp.enabled = false;
         }
 
-        if (inkTimer > 0f)
+        if (inkTimer > 0f){
             inkTimer -= Time.deltaTime;
+        }
+
+        // displays the alternate squid cosmetic if the user bought it
+        if(saveManager.hasAlternateSquid()){
+            anim.runtimeAnimatorController = altSquidAnimator;
+        }
     }
 
     void FixedUpdate()
