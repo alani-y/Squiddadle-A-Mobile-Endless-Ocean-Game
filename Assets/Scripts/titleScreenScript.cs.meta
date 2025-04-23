@@ -1,13 +1,9 @@
 fileFormatVersion: 2
-guid: f2d2d6eded0dff444a17f2f9414ac32e
+guid: 484da68b2c4fe5844a980a55bccde514
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - fish: {instanceID: 0}
-  - squid: {instanceID: 0}
-  - shark: {instanceID: 0}
-  - cam: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

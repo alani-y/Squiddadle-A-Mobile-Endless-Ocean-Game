@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor.UI;
 using UnityEngine;
 
 public class sharkScript : fishScript
@@ -10,7 +9,7 @@ public class sharkScript : fishScript
     protected GameObject squid;
     protected squidScript squidScript;
     public override float fishSpeed => 3f;
-    public override float maxSpeed => 8f;
+    public override float maxSpeed => 5f;
     private bool isChasing;
     public float detectionRadius = 25f;
     private bool stunnedByInk = false;

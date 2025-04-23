@@ -12,7 +12,7 @@ public class SharkTrackerUI : MonoBehaviour
 
     void Start()
     {
-        //Instantiate(rayPrefab, canvasRect);
+
     }
     void OnEnable()
     {

@@ -81,5 +81,4 @@ public class saveManager : MonoBehaviour
 [System.Serializable]
 public class GameData{
     public float score;
-
 }

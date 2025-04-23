@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class fishScript : MonoBehaviour
 {
-    public virtual float fishSpeed => 0.5f;
+    public virtual float fishSpeed => 1f;
+
+    // how often a fish will change directions
     public float directionInterval = 10f;
 
     private SpriteRenderer sp;
@@ -14,10 +16,13 @@ public class fishScript : MonoBehaviour
     protected Rigidbody2D rb;
     public virtual Vector2 movementBounds => new Vector2(-1000f, 1000f); // keeps the fish's movements to a limited area
 
-    private Vector2 targetPosition;
-    private float timer;
+    private float fishExistenceTimer; // how long a fish has existed for
 
-    private float spawnBuffer = 5;
+    // where a fish is swimming towards
+    private Vector2 targetPosition;
+
+    // how long since a fish has changed direction
+    private float directionTimer;
 
     public virtual void Start()
     {
@@ -29,7 +34,13 @@ public class fishScript : MonoBehaviour
 
     public virtual void Update()
     {
-        timer += Time.deltaTime;
+        directionTimer += Time.deltaTime;
+        fishExistenceTimer += Time.deltaTime;
+
+        // destroys fish that the squid didn't catch after 100s
+        if (fishExistenceTimer > 100f) {
+            Destroy(gameObject);
+        }
     }
 
     public virtual Vector2 GetRandomPosition()
@@ -43,10 +54,10 @@ public class fishScript : MonoBehaviour
 
    public virtual void FixedUpdate()
     {
-        if (timer > directionInterval)
+        if (directionTimer > directionInterval)
         {
             targetPosition = GetRandomPosition();
-            timer = 0;
+            directionTimer = 0;
         }
 
         Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;

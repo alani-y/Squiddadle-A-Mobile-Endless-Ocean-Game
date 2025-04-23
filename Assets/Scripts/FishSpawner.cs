@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FishSpawner : MonoBehaviour
 {
-    public GameObject fish;
+    public GameObject fish; // fish prefab
     public GameObject squid;
     public GameObject shark;
     public Camera cam;
@@ -12,22 +12,24 @@ public class FishSpawner : MonoBehaviour
     public float cameraHalfWidth;
     public float cameraHalfHeight;
 
-    // How long it takes for each fish to spawn
-    public int fishSpawnRate = 2;
-    public int sharkSpawnRate = 10;
+    // How long it takes for each fish/shark to spawn
+    public float fishSpawnRate = 0.1f;
+    public float sharkSpawnRate = 10f;
     private Vector2 displacement;
 
-    // counts how long its been since a new fish spawned
+    // counts how long its been since a new fish/shark spawned
     private float fishTimer;
     private float sharkTimer;
 
+    // the furthest distance in the x and y axis the fish can spawn from the player
     public float xMaxBounds;
     public float yMaxBounds;
+
+    // closest possible distance to the camera edge a fish or shark can spawn at
     public float buffer;
     void Start()
     {
-        Instantiate(fish, transform.position, transform.rotation);
-
+        //Instantiate(fish, transform.position, transform.rotation);
     }
 
     // Update is called once per frame
@@ -72,26 +74,34 @@ public class FishSpawner : MonoBehaviour
         float camHalfHeight = cam.orthographicSize;
         float camHalfWidth = camHalfHeight * cam.aspect;
 
-        // camera position is the base for the fish spawn range
         Vector2 playerPos = cam.transform.position;
+        Vector2 squidPos = squid.transform.position;
 
         float xOffset = camHalfWidth + buffer;
         float yOffset = camHalfHeight + buffer;
 
-        bool spawnLeft = Random.value < 0.5f;
-        bool spawnAbove = Random.value < 0.5f;
+        // determine the direction based on the squid's position
+        bool spawnLeft = squidPos.x < playerPos.x;
+        bool spawnRight = squidPos.x > playerPos.x;
+        bool spawnAbove = squidPos.y > playerPos.y;
+        bool spawnBelow = squidPos.y < playerPos.y;
 
+        // accounts for x axis
         if (spawnLeft)
             xSpawnVector = Random.Range(playerPos.x - xOffset - xMaxBounds, playerPos.x - xOffset);
-        else
+        else if (spawnRight)
             xSpawnVector = Random.Range(playerPos.x + xOffset, playerPos.x + xOffset + xMaxBounds);
+        else
+            xSpawnVector = Random.Range(playerPos.x - xOffset - xMaxBounds, playerPos.x + xOffset + xMaxBounds);
 
+        // accounts for y axis
         if (spawnAbove)
             ySpawnVector = Random.Range(playerPos.y + yOffset, playerPos.y + yOffset + yMaxBounds);
-        else
+        else if (spawnBelow)
             ySpawnVector = Random.Range(playerPos.y - yOffset - yMaxBounds, playerPos.y - yOffset);
+        else
+            ySpawnVector = Random.Range(playerPos.y - yOffset - yMaxBounds, playerPos.y + yOffset + yMaxBounds);
 
         return new Vector2(xSpawnVector, ySpawnVector);
     }
-
 }

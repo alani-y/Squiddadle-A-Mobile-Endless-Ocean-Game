@@ -3,8 +3,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using UnityEditor.UI;
-
 
 public class squidScript : MonoBehaviour
 {
@@ -92,12 +90,14 @@ public class squidScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D animal)
     {
+        // destroys the fish if the squid ate it
         if (animal.CompareTag("Fish") && isAlive)
         {
-            animal.gameObject.SetActive(false);
+            Destroy(animal.gameObject);
             score += 1;
         }
 
+        // the squid is dead if it hits a shark
         if (animal.CompareTag("Shark"))
         {
             gameManager.gameOver();
