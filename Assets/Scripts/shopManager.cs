@@ -22,7 +22,7 @@ public class shopManager : MonoBehaviour
         try
         {
             var options = new InitializationOptions();
-            // options.SetEnvironmentName("production"); // Optional
+            // options.SetEnvironmentName("production");
 
             await UnityServices.InitializeAsync(options);
             Debug.Log("Unity Gaming Services initialized.");

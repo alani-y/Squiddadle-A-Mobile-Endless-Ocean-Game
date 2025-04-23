@@ -13,7 +13,7 @@ public class FishSpawner : MonoBehaviour
     public float cameraHalfHeight;
 
     // How long it takes for each fish/shark to spawn
-    public float fishSpawnRate = 0.1f;
+    public float fishSpawnRate = 0.05f;
     public float sharkSpawnRate = 10f;
     private Vector2 displacement;
 
@@ -40,9 +40,9 @@ public class FishSpawner : MonoBehaviour
         }
         else{
             // creates a fish near the squid
-            buffer = 0;
-            xMaxBounds = 0f;
-            yMaxBounds = 0f;
+            buffer = 3f;
+            xMaxBounds = 3f;
+            yMaxBounds = 4f;
             displacement = GetInitialSpawn();
 
             Instantiate(fish, displacement, cam.transform.rotation);
@@ -57,7 +57,7 @@ public class FishSpawner : MonoBehaviour
             // creates a shark near the squid
             xMaxBounds = 20f;
             yMaxBounds = 20f;
-            buffer = 4f;
+            buffer = 5f;
             displacement = GetInitialSpawn();
 
             Instantiate(shark, displacement, cam.transform.rotation);
@@ -91,7 +91,7 @@ public class FishSpawner : MonoBehaviour
             xSpawnVector = Random.Range(playerPos.x - xOffset - xMaxBounds, playerPos.x - xOffset);
         else if (spawnRight)
             xSpawnVector = Random.Range(playerPos.x + xOffset, playerPos.x + xOffset + xMaxBounds);
-        else
+        else // if the squid is centered in the x axis
             xSpawnVector = Random.Range(playerPos.x - xOffset - xMaxBounds, playerPos.x + xOffset + xMaxBounds);
 
         // accounts for y axis
@@ -99,7 +99,7 @@ public class FishSpawner : MonoBehaviour
             ySpawnVector = Random.Range(playerPos.y + yOffset, playerPos.y + yOffset + yMaxBounds);
         else if (spawnBelow)
             ySpawnVector = Random.Range(playerPos.y - yOffset - yMaxBounds, playerPos.y - yOffset);
-        else
+        else // if the squid is centered in the y axis
             ySpawnVector = Random.Range(playerPos.y - yOffset - yMaxBounds, playerPos.y + yOffset + yMaxBounds);
 
         return new Vector2(xSpawnVector, ySpawnVector);

@@ -107,7 +107,7 @@ public class squidScript : MonoBehaviour
         }
 
         // the squid is dead if it hits a shark
-        if (animal.CompareTag("Shark"))
+        if (animal.CompareTag("Shark") && isAlive)
         {
             sFXPlayerScript.playSFX(squidDeathSound);
             gameManager.gameOver();

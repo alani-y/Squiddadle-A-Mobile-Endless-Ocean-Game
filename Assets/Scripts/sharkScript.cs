@@ -63,11 +63,6 @@ public class sharkScript : fishScript
         }
     }
 
-    private void HandleSquidInk()
-    {
-        StartCoroutine(StunCoroutine());
-    }
-
     private IEnumerator StunCoroutine()
     {
         stunnedByInk = true;

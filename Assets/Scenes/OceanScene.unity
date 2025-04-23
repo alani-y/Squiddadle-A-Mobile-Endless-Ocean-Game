@@ -1153,6 +1153,7 @@ GameObject:
   - component: {fileID: 853989415}
   - component: {fileID: 853989414}
   - component: {fileID: 853989413}
+  - component: {fileID: 853989416}
   m_Layer: 5
   m_Name: inkblot ability
   m_TagString: Untagged
@@ -1274,6 +1275,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853989411}
   m_CullTransparentMesh: 1
+--- !u!114 &853989416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853989411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e4cbe16bb897e14084cb160e02176f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: b1f50bd4618dcd147ad05900319279a8, type: 3}
 --- !u!1 &949542448
 GameObject:
   m_ObjectHideFlags: 0
@@ -2183,7 +2197,7 @@ GameObject:
   - component: {fileID: 1252950061}
   - component: {fileID: 1252950060}
   - component: {fileID: 1252950059}
-  - component: {fileID: 1252950058}
+  - component: {fileID: 1252950062}
   m_Layer: 5
   m_Name: shop
   m_TagString: Untagged
@@ -2211,32 +2225,6 @@ RectTransform:
   m_AnchoredPosition: {x: -122, y: -91}
   m_SizeDelta: {x: 2048, y: 2048}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1252950058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252950056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f7dd963c1a8b427b96975fa211478a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  consumePurchase: 1
-  dontDestroyOnLoad: 1
-  onProductsFetched:
-    m_PersistentCalls:
-      m_Calls: []
-  onPurchaseComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  onPurchaseFailed:
-    m_PersistentCalls:
-      m_Calls: []
-  onPurchaseDetailedFailedEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1252950059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2331,6 +2319,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252950056}
   m_CullTransparentMesh: 1
+--- !u!114 &1252950062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252950056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e4cbe16bb897e14084cb160e02176f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: b1f50bd4618dcd147ad05900319279a8, type: 3}
 --- !u!1 &1278108403
 GameObject:
   m_ObjectHideFlags: 0

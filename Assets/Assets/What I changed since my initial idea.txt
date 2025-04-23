@@ -1,4 +1,4 @@
 I changed my idea to this endless runner inspired game where the player is a squid navigating
-through the ocean. The player will find small fish to eat and grow bigger, while also evading
+through the ocean. The player will find small fish to eat, while also evading
 the sharks that will happily eat the player squid. I simply didn't find my original concept
 that fun in practice, and my current favorite mobile game is an endless runner game.

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 public class SharkTrackerUI : MonoBehaviour
 {
-    public RectTransform canvasRect;           // Reference to Canvas RectTransform
+    public RectTransform canvasRect; // the shark tracker UI canvas
     public Camera mainCam;
-    public GameObject rayPrefab;
-    public Transform squid;                    // Reference to the squid/player
+    public GameObject rayPrefab; // the shark direction indicator
+    public Transform squid;
 
     private Dictionary<sharkScript, GameObject> rays = new();
 
