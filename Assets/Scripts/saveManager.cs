@@ -25,6 +25,7 @@ public class saveManager : MonoBehaviour
                 currentData = JsonUtility.FromJson<GameData>(dataToLoad);
                 highScore = currentData.score;
                 Debug.Log("loaded high score: " + highScore);
+                Debug.Log("has alternate squid: " + currentData.hasAlternateSquid);
             }
         }
         catch (Exception e)
@@ -60,6 +61,11 @@ public class saveManager : MonoBehaviour
         return currentData.score;
     }
 
+    public void addAlternateSquid(){
+        currentData.hasAlternateSquid = true;
+        saveGame();
+    }
+
     private void saveGame(){
         try
         {
@@ -81,4 +87,5 @@ public class saveManager : MonoBehaviour
 [System.Serializable]
 public class GameData{
     public float score;
+    public bool hasAlternateSquid = false;
 }

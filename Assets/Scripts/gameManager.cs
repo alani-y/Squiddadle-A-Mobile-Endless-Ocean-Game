@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using Unity.VisualScripting;
 
 public class gameManager : MonoBehaviour
 {
-
+    private static gameManager instance;
     public float score = 0;
     public squidScript squid;
     private saveManager saveManager;
@@ -25,6 +26,7 @@ public class gameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         saveManager = GetComponent<saveManager>();
         // Prints the highest score
         highScoreLabel.text = "High Score: " + saveManager.GetScore().ToString();
@@ -63,5 +65,9 @@ public class gameManager : MonoBehaviour
 
     public void enableInkblot(){
         inkblotButton.interactable = true;
+    }
+
+    public static void addAlternateSquid(){
+        instance.saveManager.addAlternateSquid();
     }
 }

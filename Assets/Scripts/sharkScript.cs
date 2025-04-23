@@ -13,7 +13,7 @@ public class sharkScript : fishScript
     private bool isChasing;
     public float detectionRadius = 25f;
     private bool stunnedByInk = false;
-    private float inkStunDuration = 3f;
+    private float inkStunDuration = 4f;
 
     public override Vector2 movementBounds => new Vector2(-1200f, 1200f);
 

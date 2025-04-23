@@ -44,7 +44,7 @@ public class FishSpawner : MonoBehaviour
             xMaxBounds = 0f;
             yMaxBounds = 0f;
             displacement = GetInitialSpawn();
-            Debug.Log("fish displacement:" + displacement);
+
             Instantiate(fish, displacement, cam.transform.rotation);
             // resets the fishTimer when a new fish is created
             fishTimer = 0;
@@ -59,7 +59,7 @@ public class FishSpawner : MonoBehaviour
             yMaxBounds = 20f;
             buffer = 4f;
             displacement = GetInitialSpawn();
-            Debug.Log(displacement);
+
             Instantiate(shark, displacement, cam.transform.rotation);
             // resets the fishTimer when a new shark is created
             sharkTimer = 0;
