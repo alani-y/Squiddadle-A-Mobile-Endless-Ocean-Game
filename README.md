@@ -12,7 +12,7 @@ Welcome to **Squiddadle!**, a colorful aquatic adventure where you control a dar
 - [Credits](#credits)
 
 ## Overview
-Squiddadle is a dynamic 2D exploration game built with Unity. You play as a brave squid trying to navigate an evolving underwater environment filled with randomly spawning fish and sharks. Collect items, avoid danger, and see how long you can survive!
+Squiddadle is a dynamic 2D exploration mobile game built with Unity. You play as a brave squid trying to navigate an evolving underwater environment filled with randomly spawning fish and sharks. Collect fish, avoid danger, and see how long you can survive!
 
 ## Gameplay Features
 - **Dynamic Spawning:** Fish and sharks spawn based on player location, ensuring a constantly changing environment.
