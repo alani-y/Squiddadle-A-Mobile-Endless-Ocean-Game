@@ -1,6 +1,6 @@
-# Squiddadle
+# Squiddadle!
 
-Welcome to **Squiddadle**, a colorful aquatic adventure where you control a daring squid exploring the open ocean, dodging sharks, collecting supplies, and surviving the deep!
+Welcome to **Squiddadle!**, a colorful aquatic adventure where you control a daring squid exploring the open ocean, dodging sharks, collecting fish, and surviving the deep!
 
 ## Table of Contents
 - [Overview](#overview)
