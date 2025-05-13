@@ -1,5 +1,7 @@
 # Squiddadle!
 
+https://github.com/user-attachments/assets/bbaca7f5-bb49-4509-8a8b-7a65e211755c
+
 Welcome to **Squiddadle!**, a colorful aquatic adventure where you control a daring squid exploring the open ocean, dodging sharks, collecting fish, and surviving the deep!
 
 ## Overview
